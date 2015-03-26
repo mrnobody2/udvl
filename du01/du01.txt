@@ -1,0 +1,111 @@
+DU 1
+
+Piercova spojka sa v tomto dokumente bude znacit ako |.
+
+1.1
+Definicia (Vytvarajuca postupnost):
+Vytvarajuca postupnost je lubovolna konecna postupnost, ktorej
+kazdy clen je vyrokova premenna, alebo ma tvar (A | B), kde 
+A a B su nejake predchadzajuce cleny postupnosti.
+
+Definicia (Formula):
+Postupnost symbolov A je formula, ak existuje vytvarajuca
+postupnost, ktorej poslednym prvkom je A. Tuto postupnost
+volame tiez vytvarajuca postupnost pre A.
+
+Definıcia (Vytvarajuci strom):
+Vytvarajuci strom pre formulu X je binarny strom T obsahujuci v
+kazdom vrchole formulu, pricom platı:
+- v koreni T je formula X,
+- ak vrchol obsahuje formulu (A|B), kde b je tiez rovnaka binarna
+spojka, tak ma dvoch synov, pricom lavy syn obsahuje formulu A a 
+pravy formulu B,
+- vrcholy obsahujuce vyrokove premenne su listami.
+
+Definıcia (Boolovske ohodnotenie):
+Ohodnotenie "v" mnoziny E sa nazyva boolovske, ak pre kazdu
+formulu A a B z E platı:
+- Formula (A | B) je pravdiva pri "v" ak A aj B su nepravdive pri "v",
+inac je (A | B) nepravdiva.
+
+
+1.2
+| je definovateľná zo spojok -, ^ a v:
+A | B <-> -(A v B) z definicie NOR = negovane OR
+A | B <-> -A ^ -B podla De Morganovho pravidla
+
+-, ^, V, -> su definovatelne z |:
+negacia -A:
+A -A
+1 0
+0 1
+
+A | A:
+A A|A
+1 0
+0 1
+
+-A <-> A|A
+
+konjunkcia A ^ B:
+A B A ^ B
+1 1 1
+0 1 0
+1 0 0
+0 0 0
+
+(A|A) | (B|B):
+z predchadzajuceho dokazu negacie prepisme hodnoty pre A|A a B|B
+A B -A -B -A|-B
+1 1  0  0   1
+0 1  1  0   0
+1 0  0  1   0
+0 0  1  1   0
+
+A ^ B <-> (A|A) | (B|B)
+
+disjunkcia A v B:
+A B A ^ B
+1 1  1
+0 1  1
+1 0  1
+0 0  0
+
+(A|B)|(A|B):
+
+A B A|B  (A|B)|(A|B)
+1 1  0    1
+0 1  0    1
+1 0  0    1
+0 0  1    0
+
+A v B <-> (A|B)|(A|B)
+
+implikacia A -> B:
+A B A -> B
+1 1  1
+0 1  1
+1 0  0
+0 0  1
+
+((A|A)|B)|((A|A)|B):
+zas pouzijem dokazanu negaciu
+A B -A -A|B (-A|B)|(-A|B)
+1 1  0   0    1
+0 1  1   0    1
+1 0  0   1    0
+0 0  1   0    1
+
+(A -> B) <-> ((A|A)|B)|((A|A)|B)
+
+1.3
+- Negacia -X obcas pravdivej formuly X je tiez obcas pravdiva.
+Z def. existuje aspon jedno ohodnotenie, kedy je nepravdiva, takze je obcas pravdiva pre -X.
+
+- Negacia splnitelnej formuly je obcas pravdiva.
+Z def. splnitelnosti existuje interpretacia taka, ze formula je pravdiva, ale nemam zarucene, ze existuje
+interpretacia taka, ze formula nie je pravdiva, takze existuje kontrapriklad. Napriklad tautologia.
+
+- Negacia obcas pravdivej formuly je splnitelna.
+Z def. existuje aspon jedno ohodnotenie, kedy je nepravdiva, takze je obcas pravdiva pre jej negaciu, takze
+existuje interpretacia taka, ze formula je pravdiva.
